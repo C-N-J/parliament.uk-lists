@@ -1,0 +1,9 @@
+- @briefings.each do |date, briefings|
+  %h3= date
+  - briefings.each do |briefing|
+    %h2= link_to briefing.title, briefing_path(briefing.id)
+    %h4= briefing.library
+    %h4= briefing.created
+    %h4= briefing.topic
+    %h4= briefing.summary
+
