@@ -1,9 +1,22 @@
-- @briefings.each do |date, briefings|
-  %h3= date
-  - briefings.each do |briefing|
-    %h2= link_to briefing.title, briefing_path(briefing.id)
-    %h4= briefing.library
-    %h4= briefing.created
-    %h4= briefing.topic
-    %h4= briefing.summary
+.section--primary
+  .container
+    %h1 Research
 
+
+%section#content{ tabindex: "0" }
+  .container
+    %h2 Latest research
+    - @briefings.each do |date, briefings|
+      .flex--2__1-2
+        %div
+          %p.gamma= date
+        %div
+          %ul.list--pipe
+            - briefings.each do |briefing|
+              %li
+                .list--details
+                  %p.delta= briefing.topic
+                  %h3= link_to briefing.title, briefing_path(briefing.id)
+                  %p= briefing.summary
+                  %p.milli= briefing.library
+                  %p.milli= briefing.created
