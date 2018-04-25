@@ -16,7 +16,7 @@ class BriefingsController < ApplicationController
       id       = briefing['_about'].scan(/resources\/(\d+)/)[0][0]
       library  = briefing.dig('publisher', 'prefLabel', '_value')
       created  = briefing.dig('created', '_value') || briefing.dig('date', '_value')
-      topic    = briefing.dig('topic').first.dig('prefLabel', '_value')
+      topic    = briefing.dig('topic')&.first&.dig('prefLabel', '_value')
       @briefings << Struct::Briefing.new(id, title, summary, library, created, topic)
     end
 
